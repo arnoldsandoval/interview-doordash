@@ -80,9 +80,7 @@ const id = shortid.generate();
     onOpen,
     onClose,
     ...rest 
-  } = props;
-  /** The the position/percentage in which the short position starts */
-  
+  } = props;  
   /** 
    * BottomSheet ref, used to calculate the height of the BottomSheet 
    * element, as well as halt execution of the touch handler if 
@@ -90,10 +88,14 @@ const id = shortid.generate();
    * 
   */
   const [componentRef, height] = useHeight();
-  const offset = 48;
-  const h = -Math.abs(height - offset);
+  const bottomOffset = 48;
+  const h = -Math.abs(height - bottomOffset);
   const POS_SHORT = h * 0.6;
   const POS_TALL = h;
+
+  /**
+   * {@link https://react-spring.io/hooks/use-spring|react-spring docs > useSpring hook}
+   */
   const [{ y }, set] = useSpring(() => ({ y: 0 }));
 
   /**
@@ -114,7 +116,7 @@ const id = shortid.generate();
    */
   const close = () => {
     set({ 
-      y: offset,
+      y: bottomOffset,
       immediate: false, 
       config: { ...config.stiff },
       onRest: () => {
@@ -132,7 +134,7 @@ const id = shortid.generate();
    * allow someone else to leverage the same BottomSheet interaction in a 
    * custom component.
    * 
-   * @param Object - @todo (this comes from react-use-gesture, need to figure out how to document)
+   * {@link https://use-gesture.netlify.app/docs/hooks/|react-use-gesture docs > Hooks}
    */
   const dragEventHandler = ({ 
     last: isLastEvent, 
@@ -195,7 +197,7 @@ const id = shortid.generate();
   }
 
   /**
-   * {@link https://use-gesture.netlify.app/docs/options/|react-use-gesture API Options}
+   * {@link https://use-gesture.netlify.app/docs/options/|react-use-gesture docs > API Options}
    */
   const bind = useDrag(dragEventHandler, {
     initial: () => [POS_SHORT, y.get()], 
@@ -205,7 +207,7 @@ const id = shortid.generate();
   });
 
   /**
-   * Depending on the state
+   * Set position based off of the isOpen prop.
    */
   if (isOpen) {
     open('short', 'stiff');
