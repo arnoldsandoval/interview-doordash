@@ -20,6 +20,7 @@ This project uses [Storybook](https://storybook.js.org), [TypeScript](https://ww
 - This README can be found there as well for convenience.
 - Storybook renders stories within an iframe element. While it is excellent for manipulating props -- it isn't perfect when using components like the BottomSheet. If you use it on your mobile phone, it will function a bit wonky. 
     - _**Please load the iframe source directly when using the touch interaction**_. You can do this easily by prepending `iframe.html` to the query param string from the page you wish to test.
+    - For convenience, you can use <a href="https://arnoldsandoval.github.io/doordash-take-home/iframe.html?path=/story/example-bottomsheet--scrollable-body" target="_blank" rel="noopener">this link</a> to open a test page on your mobile device.
 - If you are on the iOS 15 Beta (like I am), you'll notice Safari has moved the address bar to the bottom of the screen ([see screenshot](https://cln.sh/lUGFDo)). As a result, it tends to interfere with this kind of BottomSheet interaction. While it still works, it can be a jarring experience, as the address bar collapses and expands depending on any given gesture.
 - The useHeight hook is not something I wrote, and I deserve no credit for it. It was extracted from this [CSS Tricks](https://css-tricks.com/making-sense-of-react-spring/) article. It uses [ResizeObserver](), which is _really_ cool, but has no [IE support](https://caniuse.com/resizeobserver). In a production setting, a polyfill will likely be required for it.
 
