@@ -1,0 +1,58 @@
+@use "../../scss/variables";
+
+.button {
+  display: inline-block;
+  position: relative;
+  margin-block: 0;
+  margin-inline: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid transparent;
+  background-color: transparent;
+  font-family: variables.$font-family;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  border-radius: 100px;
+
+  &:hover,
+  &:focus {
+    background: variables.$color-secondary
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff,  0 0 0 4px variables.$color-secondary-dark;
+  }
+
+  &.variant-primary {
+    background: variables.$color-primary;
+    color: white;
+    
+    &:focus {
+      box-shadow: 0 0 0 2px #fff,  0 0 0 4px variables.$color-primary-light;
+    }
+  }
+
+  // The dismiss variant is special, and one might argue that it should 
+  // be a separate component altogether. For the sake of expediency im 
+  // baking it in here.
+  &.variant-dismiss {
+    font-size: 0.875rem;
+    padding: 0;
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+}
+
+.button--label {
+  &.is-visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+}
